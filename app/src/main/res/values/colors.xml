@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#17c782</color>
+    <color name="colorPrimaryDark">#17c782</color>
+    <color name="colorAccent">#17c782</color>
+
+    <color name="main_button">#007de3</color>
+
+    <color name="software_textColor_selected">#FFFC5555</color>
+    <color name="software_textColor_unselected">#FF464646</color>
+
+    <color name="genre">#666666</color>
+    <color name="year">#888888</color>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_start_color">#5b5a5a</color>
+    <color name="list_row_end_color">#5b5a5a</color>
+    <color name="list_row_hover_start_color">#5b5a5a</color>
+    <color name="list_row_hover_end_color">#5b5a5a</color>
+
+
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <!-- <color name="possible_result_points">#c0ffbd21</color> --> <!-- Android standard ICS color -->
+    <color name="possible_result_points">#2fbf30</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="trans_back">#b0000000</color>
+    <color name="trans_white">#b0ffffff</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#77000000</color>
+
+    <color name="main_blue">#007de3</color>
+    <color name="main_orange">#de3700</color>
+
+    <color name="main_bgd">#f4faff</color>
+    <color name="button_grey">#AAAAAA</color>
+    <color name="bottom_bkg">#f1f0f1</color>
+    <color name="bottom_main_grey">#929292</color>
+    <color name="text_white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transp_white">#55FFFFFF</color>
+    <color name="transp_black">#55000000</color>
+
+    <!--custom dialog-->
+    <color name="color_transprent_loading_bg_color">#99000000</color>
+    <color name="color_dialog_divider_gray">#aaaaaa</color>
+
+    <!--background gradient-->
+    <color name="bg_gradient_start">#201944</color>
+    <color name="bg_gradient_end">#376982</color>
 </resources>
