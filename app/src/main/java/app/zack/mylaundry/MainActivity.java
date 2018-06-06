@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import app.zack.mylaundry.fragment.BaseFragment;
-import app.zack.mylaundry.fragment.Frag_Login;
+import app.zack.mylaundry.fragment.FragLogin;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentManager = getSupportFragmentManager();
 
         navigateMap.clear();
-        mapNaviToFragment(R.layout.frag_login, new Frag_Login());
+        mapNaviToFragment(R.layout.frag_login, new FragLogin());
 
         hideorshow(fragmentManager, R.layout.frag_login);
 

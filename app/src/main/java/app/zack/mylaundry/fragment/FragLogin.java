@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import app.zack.mylaundry.R;
 
-public class Frag_Login extends BaseFragment {
+public class FragLogin extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
