@@ -1,0 +1,77 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+        var date1 = Android.getDate1().split('/');
+        var date11 = Android.getDate11().split('/');
+        var date2 = Android.getDate2().split('/');
+        var date22 = Android.getDate22().split('/');
+        var date3 = Android.getDate3().split('/');
+        var date33 = Android.getDate33().split('/');
+        dataTable.addColumn({ type: 'string', id: 'President' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ Android.getItem1(), new Date(date1[0], date1[1]-1, date1[2]), new Date(date11[0], date11[1]-1, date11[2])],
+          [ Android.getItem2(), new Date(date2[0], date2[1]-1, date2[2]),  new Date(date22[0], date22[1]-1, date22[2])],
+          [ Android.getItem3(), new Date(date3[0], date3[1]-1, date3[2]),  new Date(date33[0], date33[1]-1, date33[2])]]);
+
+        var options = {
+          title: Android.getChartTitle(),
+          hAxis: {title: 'Value',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+        chart.draw(dataTable, options);
+      }
+
+
+
+
+  google.charts.load("current", {packages:["timeline"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var container = document.getElementById('timeline');
+    var chart = new google.visualization.Timeline(container);
+    var dataTable = new google.visualization.DataTable();
+    var data = Android.getData().split('/');
+    var jsonData = JSON.parse(data);//receive JSON array
+
+    dataTable.addColumn({ type: 'string', id: 'Machine' });
+    dataTable.addColumn({ type: 'date', id: 'Start' });
+    dataTable.addColumn({ type: 'date', id: 'End' });
+
+    for (var i = 0; i < jsonData.length; i++) {
+      var data = jsonData[i];//machine data array
+      var StartTime = new Date(data.time);
+      var EndTime = new Date(StartTime.getTime() + 30*60000);
+      tag = StartTime.getFullYear() + "/" + (StartTime.getMonth() + 1) + "/" + StartTime.getDate();
+      dataTable.addRow([tag, new Date(0,0,0,StartTime.getHours(),StartTime.getMinutes(),StartTime.getSeconds()),
+      new Date(0,0,0,EndTime.getHours(), EndTime.getMinutes(), EndTime.getSeconds())]);
+    }
+
+    var options = {
+    	hAxis: {
+      format: 'HH:mm'},
+      timeline: { colorByRowLabel: true }
+    };
+
+    chart.draw(dataTable, options);
+  }
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<div id="timeline" style="width: 100%; height: 100%;"></div>
+</body>
+</html>

@@ -7,6 +7,7 @@ public class Machine {
     private String mStartTime, mStopTime;
     private boolean isBusy;
     private String userInUse;
+    private String machineName;
 
     public long getMachineId() {
         return machineId;
@@ -49,5 +50,11 @@ public class Machine {
     }
 
 
+    public String getMachineName() {
+        return machineName;
+    }
 
+    public void setMachineName(String machineName) {
+        this.machineName = machineName;
+    }
 }

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bgd"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:id="@+id/rl_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_150"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/size_41" >
+
+        <ImageView
+            android:id="@+id/account_avatar_editmode"
+            android:layout_width="@dimen/size_90"
+            android:layout_height="@dimen/size_90"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/size_10"
+            android:scaleType="fitXY"
+            android:src="@drawable/user2" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etAccPhone"
+        style="@style/register_form_input"
+        android:layout_below="@+id/title_phone"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/etAccEmail"
+        style="@style/register_form_input"
+        android:layout_below="@+id/title_email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etAccName"
+        style="@style/register_form_input"
+        android:layout_below="@+id/title_Owner" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/title_Owner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAccName"
+        android:layout_alignStart="@+id/etAccName"
+        android:layout_below="@+id/rl_banner"
+        android:layout_marginTop="@dimen/size_10"
+        android:text="@string/n_contect_name"
+        android:textSize="@dimen/text_size_s" />
+
+    <TextView
+        android:id="@+id/title_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAccEmail"
+        android:layout_alignStart="@+id/etAccEmail"
+        android:layout_below="@id/etAccPhone"
+        android:layout_marginTop="@dimen/size_5"
+        android:text="@string/n_contect_email"
+        android:textSize="@dimen/text_size_s" />
+
+    <TextView
+        android:id="@+id/title_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAccPhone"
+        android:layout_alignStart="@+id/etAccPhone"
+        android:layout_below="@+id/etAccName"
+        android:layout_marginTop="@dimen/size_5"
+        android:text="@string/n_contect_phone"
+        android:textSize="@dimen/text_size_s" />
+
+    <TextView
+        android:id="@+id/title_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etAccEmail"
+        android:layout_alignStart="@+id/etAccEmail"
+        android:layout_below="@+id/etAccEmail"
+        android:layout_marginTop="@dimen/size_5"
+        android:text="@string/n_contect_other_info"
+        android:textSize="@dimen/text_size_s" />
+
+    <EditText
+        android:id="@+id/etAccAddress"
+        style="@style/register_form_input"
+        android:layout_below="@id/title_address"
+        android:inputType="textEmailAddress" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/etAccAddress"
+        android:layout_alignLeft="@id/etAccAddress"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@id/etAccAddress"
+        android:layout_alignStart="@id/etAccAddress"
+        android:layout_below="@id/etAccAddress" >
+
+        <Button
+            android:id="@+id/btUpdate"
+            android:layout_height="@dimen/size_25"
+        	android:layout_width="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:text="@string/comfirm_ok"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_s" 
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@+id/ll_center"
+        	android:layout_toEndOf="@+id/ll_center"
+        	android:layout_marginLeft="@dimen/size_10"
+            />
+
+        <Button
+            android:id="@+id/btCancel"
+            android:layout_height="@dimen/size_25"
+        	android:layout_width="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:text="@string/comfirm_cancel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_s" 
+        	android:textColor="@android:color/white"
+        	android:layout_toLeftOf="@+id/ll_center"
+        	android:layout_toStartOf="@+id/ll_center"
+        	android:layout_marginRight="@dimen/size_10"
+        	/>
+
+        <Button
+            android:id="@+id/btLogout"
+            android:layout_height="@dimen/size_25"
+            android:layout_width="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:text="@string/tv_logout"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/text_size_s"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="@dimen/size_30"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

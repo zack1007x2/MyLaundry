@@ -5,22 +5,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import app.zack.mylaundry.fragment.BaseFragment;
 import app.zack.mylaundry.fragment.FragLogin;
+import app.zack.mylaundry.fragment.FragMachineList;
+import app.zack.mylaundry.fragment.FragRegister;
+import app.zack.mylaundry.fragment.FragChart;
+import app.zack.mylaundry.fragment.FragUserInfo;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
 
     private FragmentManager fragmentManager;
     private Fragment mFragment;
     private FragmentTransaction fragmentTransaction;
     private SparseArray<BaseFragment> navigateMap = new SparseArray<BaseFragment>();
-
+    private Fragment mCurFragment;
 
 
     @Override
@@ -39,42 +41,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         navigateMap.clear();
         mapNaviToFragment(R.layout.frag_login, new FragLogin());
-
-        hideorshow(fragmentManager, R.layout.frag_login);
+        mapNaviToFragment(R.layout.frag_register, new FragRegister());
+        mapNaviToFragment(R.layout.frag_machine_list, new FragMachineList());
+        mapNaviToFragment(R.layout.frag_user_info, new FragUserInfo());
+        mapNaviToFragment(R.layout.frag_report, new FragChart());
+        replaceFragment(R.layout.frag_login);
 
     }
 
 
     private void mapNaviToFragment(int id, BaseFragment fragment) {
-        View view = findViewById(id);
-
-        view.setOnClickListener(this);
-        view.setSelected(false);
-        navigateMap.put(id, fragment);
+        if(navigateMap.get(id)==null)
+            navigateMap.put(id, fragment);
+        else
+            throw new IllegalArgumentException("Key Already Exist");
     }
 
-    private void hideorshow(FragmentManager fm, int id) {
-
-        String tag = String.valueOf(id);
-        fragmentTransaction = fm.beginTransaction();
-        if (null == fm.findFragmentByTag(tag)) {
-            fragmentTransaction.replace(R.id.contentframe, navigateMap.get(id), tag);
-        } else {
-            fragmentTransaction.show(navigateMap.get(id));
-        }
+    public void replaceFragment(int viewid) {
+        String tag = String.valueOf(viewid);
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contentframe, navigateMap.get(viewid), tag);
         fragmentTransaction.commit();
-        for (int i = 0, size = navigateMap.size(); i < size; i++) {
-            int curId = navigateMap.keyAt(i);
-            if (curId == id) {
-                mFragment = navigateMap.get(id);
-                findViewById(id).setSelected(true);
-            } else {
-                findViewById(curId).setSelected(false);
-            }
-        }
+        mCurFragment = navigateMap.get(viewid);
     }
-
-
+    public Fragment getCurrentFragment() {
+        return mCurFragment;
+    }
 
 
 
@@ -100,17 +92,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
-    public void onClick(View view) {
-        int id = view.getId();
-
-        if (navigateMap.indexOfKey(id) >= 0) {
-
-            if (!view.isSelected()) {
-                hideorshow(getSupportFragmentManager(), id);
-            } else {
-                Log.i("Main", " ignore --- selected !!! ");
-            }
+    public void onBackPressed() {
+        if(mCurFragment.getClass() == FragRegister.class){
+            replaceFragment(R.layout.frag_login);
+        }else if(mCurFragment.getClass() != FragMachineList.class|| mCurFragment.getClass() != FragLogin.class){
+            replaceFragment(R.layout.frag_machine_list);
         }
     }
+
+
 }

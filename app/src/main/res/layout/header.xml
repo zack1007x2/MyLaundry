@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/icon"
-        android:text="墨客"
+        android:text="MyLaundry"
         android:textColor="#ffffff"
         android:textSize="@dimen/text_size_xl"/>
 

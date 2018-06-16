@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_loading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_transprent_loading_bg_color" >
+
+    <RelativeLayout
+        android:id="@+id/rl_prog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_10"
+        android:layout_marginBottom="@dimen/size_10"
+        android:layout_centerHorizontal="true">
+        <ProgressBar
+            android:id="@+id/loading_progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_loading_dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toast_coner_content"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_m"
+        android:text="@string/tv_title_reloading"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/size_5"
+        android:paddingBottom="@dimen/size_5"
+        android:paddingLeft="@dimen/size_15"
+        android:paddingRight="@dimen/size_15"
+        android:layout_below="@id/rl_prog"
+        />
+
+</RelativeLayout>
