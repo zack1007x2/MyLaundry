@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import app.zack.mylaundry.MainActivity;
 import app.zack.mylaundry.R;
@@ -46,6 +47,7 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
     MqttPublisher mMqtt;
     MySharedPer perf;
 
+    Set<String> ownSensor = new HashSet<String>();
 
     private MqttCallback mMqttCallback = new MqttCallback() {
 
@@ -59,6 +61,8 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
             log.d(topic + "@@@@" + message);
             JSONArray arr = new JSONArray(message.toString());
             JSONObject obj = (JSONObject) arr.get(0);
+            if(!ownSensor.contains(obj.getString("macAddr")))
+                return;
             if(Integer.parseInt(obj.getString("data"))>5){
                 perf.setMachineInfo(obj.getString("macAddr"), obj);
                 refreshList();
@@ -135,6 +139,13 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
     }
 
     private void initView(View view) {
+
+        ownSensor.add("0000000012345617");
+        ownSensor.add("0000000012345615");
+        ownSensor.add("0000000012345618");
+        ownSensor.add("0000000012345670");
+
+
         mHandler = new Handler();
         imgLogo = (ImageView) view.findViewById(R.id.img_logo);
         imgLogo.setOnClickListener(this);
