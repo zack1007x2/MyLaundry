@@ -24,6 +24,14 @@ public class FragRegister extends BaseFragment implements View.OnClickListener{
     MySharedPer perf;
 
     @Override
+    public void onStart() {
+        super.onStart();
+        et_email.setText(null);
+        et_pwd.setText(null);
+        et_pwd_comfirm.setText(null);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_register, container, false);
@@ -72,7 +80,7 @@ public class FragRegister extends BaseFragment implements View.OnClickListener{
                 }
 
                 if(perf.checkIDExist(et_email.getText().toString())){
-                    perf.regester(et_email.getText().toString(), et_pwd.getText().toString());
+                    perf.register(et_email.getText().toString(), et_pwd.getText().toString());
                     mActivity.replaceFragment(R.layout.frag_machine_list);
                 }else{
                     mRegisterErrorDialog.show();

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.applandeo.materialcalendarview.CalendarView;
+
 import app.zack.mylaundry.Interface.IDialogValueListener;
 import app.zack.mylaundry.R;
 
@@ -27,8 +29,15 @@ public class CustomDialogBuilder {
     private boolean cancelable = true;
     private Runnable mAutoRunnable, mVersionInfoRunnable;
     private MyLogger Log = MyLogger.getLogger(getClass().getSimpleName());
+    CalendarView calendarView;
 
     private Handler mHandler = new Handler();
+
+    public CalendarView getCalendarView() {
+        return calendarView;
+    }
+
+
 
     public CustomDialogBuilder(Context context, int layoutId) {
         mContext = context;
@@ -73,6 +82,8 @@ public class CustomDialogBuilder {
         this.cancelable = cancelable;
         return this;
     }
+
+
 
     public Dialog build() {
         final Dialog dialog = new Dialog(mContext);
@@ -124,6 +135,11 @@ public class CustomDialogBuilder {
                     tvTitle.setText(mCustomTitle);
                 ((TextView) dialog.findViewById(R.id.tvContent)).setText(mCustomMessage);
                 ((Button) dialog.findViewById(R.id.btCancel)).setOnClickListener(negativeListener);
+                break;
+
+            case R.layout.custom_dialog_dates_picker:
+                dialog.setContentView(mLayoutId);
+                calendarView = (CalendarView) dialog.findViewById(R.id.calendarView);
                 break;
 
 

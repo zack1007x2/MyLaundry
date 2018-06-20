@@ -54,7 +54,7 @@ public class MySharedPer {
 
     }
 
-    public void regester(String ID, String PWD) {
+    public void register(String ID, String PWD) {
         JSONArray list = new JSONArray();
         try {
             list.put(0, PWD);
@@ -115,7 +115,7 @@ public class MySharedPer {
 
     public String getUserInfo() {
         String id = sp.getString(Cur, null);
-        Log.d("getUserInfo", sp.getString(id + L, null));
+        Log.d("getUserInfo", sp.getString(id + L, null)==null?"Nullpointer":sp.getString(id + L, null));
         return sp.getString(id + L, null);
     }
 

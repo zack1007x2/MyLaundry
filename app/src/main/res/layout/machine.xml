@@ -76,15 +76,6 @@
                     android:textSize="@dimen/text_size_s"
                     android:id="@+id/tvDateTitle"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Small Text"
-                    android:textSize="@dimen/text_size_s"
-                    android:layout_toRightOf="@id/tvDateTitle"
-                    android:id="@+id/textView"
-                    android:layout_alignBottom="@+id/tvDateTitle"/>
-
             </RelativeLayout>
 
         </LinearLayout>
@@ -117,7 +108,7 @@
         android:id="@+id/quoteContent"
         android:scaleType="fitXY"
         android:layout_below="@id/tvContent_title"
-        android:layout_alignStart="@+id/tvContent_title"
+        android:layout_alignStart="@id/tvContent_title"
         android:layout_alignEnd="@id/tvContent_title"
         android:layout_alignRight="@id/tvContent_title"
         />

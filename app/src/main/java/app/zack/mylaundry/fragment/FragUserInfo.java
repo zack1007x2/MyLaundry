@@ -27,6 +27,24 @@ public class FragUserInfo extends BaseFragment implements View.OnClickListener{
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        refreshView();
+    }
+
+    private void refreshView() {
+        try {
+            JSONArray infos = new JSONArray(perf.getUserInfo());
+            etAccName.setText(infos.getString(1));
+            etAccPhone.setText(infos.getString(2));
+            etAccEmail.setText(infos.getString(3));
+            etAccAddress.setText(infos.getString(4));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initView(View view) {
         perf = new MySharedPer(mActivity);
         btnLogot = (Button)view.findViewById(R.id.btLogout);
@@ -39,15 +57,7 @@ public class FragUserInfo extends BaseFragment implements View.OnClickListener{
         etAccEmail = (EditText)view.findViewById(R.id.etAccEmail);
         etAccName = (EditText)view.findViewById(R.id.etAccName);
         etAccAddress = (EditText)view.findViewById(R.id.etAccAddress);
-        try {
-            JSONArray infos = new JSONArray(perf.getUserInfo());
-            etAccName.setText(infos.getString(1));
-            etAccPhone.setText(infos.getString(2));
-            etAccEmail.setText(infos.getString(3));
-            etAccAddress.setText(infos.getString(4));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
 
 
     }

@@ -52,6 +52,10 @@ public class MachineAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.tvContent_title = (TextView) convertView
                     .findViewById(R.id.tvContent_title);
+            viewHolder.tvTitle = (TextView) convertView
+                    .findViewById(R.id.tvTitle);
+            viewHolder.tvDateTitle = (TextView) convertView
+                    .findViewById(R.id.tvDateTitle);
 //            viewHolder.ImgContent = (ImageView) convertView
 //                    .findViewById(R.id.ImgContent);
 
@@ -60,9 +64,13 @@ public class MachineAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        if(mMachineList.size()==0)
+            return convertView;
         machinedata = mMachineList.get(position);
 
-        viewHolder.tvContent_title.setText(machinedata.getMachineName());
+        viewHolder.tvContent_title.setText("Info : ");
+        viewHolder.tvDateTitle.setText("Rssi : "+machinedata.getRssi());
+        viewHolder.tvTitle.setText(machinedata.getMachineName());
 //        viewHolder.ImgContent.setImageResource(R.drawable.demo);
 
         return convertView;
@@ -70,6 +78,7 @@ public class MachineAdapter extends BaseAdapter {
 
     private class ViewHolder {
         TextView tvContent_title;
+        TextView tvTitle, tvDateTitle;
         ImageView ImgContent;
     }
 

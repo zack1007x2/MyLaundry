@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import app.zack.mylaundry.MainActivity;
 import app.zack.mylaundry.R;
 import app.zack.mylaundry.data.Machine;
 import app.zack.mylaundry.data.MachineAdapter;
@@ -56,11 +57,12 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
         @Override
         public void messageArrived(String topic, MqttMessage message) throws Exception {
             log.d(topic + "@@@@" + message);
-            machineList.clear();
             JSONArray arr = new JSONArray(message.toString());
             JSONObject obj = (JSONObject) arr.get(0);
-            perf.setMachineInfo(obj.getString("macAddr"), obj);
-            refreshList();
+            if(Integer.parseInt(obj.getString("data"))>5){
+                perf.setMachineInfo(obj.getString("macAddr"), obj);
+                refreshList();
+            }
         }
 
         @Override
@@ -79,6 +81,16 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
             for (String s : set) {
                 Machine mMachine = new Machine();
                 mMachine.setMachineName(s);
+                JSONArray a;
+                try {
+                    a = new JSONArray(perf.getMachineInfo(s));
+                    mMachine.setGwid(a.getJSONObject(0).getString("gwid"));
+                    mMachine.setGwip(a.getJSONObject(0).getString("gwip"));
+                    mMachine.setRssi(a.getJSONObject(0).getString("rssi"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 machineList.add(mMachine);
             }
             mAdapter.setList(machineList);
@@ -163,10 +175,12 @@ public class FragMachineList extends BaseFragment implements View.OnClickListene
         mAdapter.setList(machineList);
         lvMachine.setAdapter(mAdapter);
         refreshList();
-//        test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-12T04:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
-//        test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-12T06:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
-//        test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-13T01:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
-//        test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-18T15:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345670\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
+        if(MainActivity.DEBUG) {
+            test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-12T04:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
+            test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-12T06:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
+            test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-13T01:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345617\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
+            test("[{\"channel\":923375000, \"sf\":10, \"time\":\"2018-06-18T15:18:10\", \"gwip\":\"140.114.71.156\", \"gwid\":\"00001c497b431e9f\", \"repeater\":\"00000000ffffffff\", \"systype\":18, \"rssi\":-124.8, \"snr\":-14.8, \"snr_max\":5.0, \"snr_min\":-20.5, \"macAddr\":\"0000000012345670\", \"data\":\"b000\", \"frameCnt\":36, \"fport\":15}]");
+        }
     }
 
 

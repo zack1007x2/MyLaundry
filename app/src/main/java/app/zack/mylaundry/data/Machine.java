@@ -4,10 +4,27 @@ public class Machine {
 
 
     private long machineId;
-    private String mStartTime, mStopTime;
-    private boolean isBusy;
-    private String userInUse;
     private String machineName;
+    private String gwip, gwid, rssi;
+
+
+    public String getGwip() {
+        return gwip;
+    }
+
+    public void setGwip(String gwip) {
+        this.gwip = gwip;
+    }
+
+    public String getGwid() {
+        return gwid;
+    }
+
+    public void setGwid(String gwid) {
+        this.gwid = gwid;
+    }
+
+
 
     public long getMachineId() {
         return machineId;
@@ -17,44 +34,19 @@ public class Machine {
         this.machineId = machineId;
     }
 
-    public String getmStartTime() {
-        return mStartTime;
-    }
-
-    public void setmStartTime(String mStartTime) {
-        this.mStartTime = mStartTime;
-    }
-
-    public String getmStopTime() {
-        return mStopTime;
-    }
-
-    public void setmStopTime(String mStopTime) {
-        this.mStopTime = mStopTime;
-    }
-
-    public boolean isBusy() {
-        return isBusy;
-    }
-
-    public void setBusy(boolean busy) {
-        isBusy = busy;
-    }
-
-    public String getUserInUse() {
-        return userInUse;
-    }
-
-    public void setUserInUse(String userInUse) {
-        this.userInUse = userInUse;
-    }
-
-
     public String getMachineName() {
         return machineName;
     }
 
     public void setMachineName(String machineName) {
         this.machineName = machineName;
+    }
+
+    public String getRssi() {
+        return rssi;
+    }
+
+    public void setRssi(String rssi) {
+        this.rssi = rssi;
     }
 }

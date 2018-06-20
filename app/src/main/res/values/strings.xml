@@ -16,6 +16,7 @@
     <string name="title_machine_id">Machine ID : </string>
     <string name="title_send">Send</string>
     <string name="title_refresh">Refresh</string>
+    <string name="title_choose_dates">Choose Dates</string>
     <string name="tv_title_forget_password">Forget Password</string>
     <string name="tv_msg_forget_password">password reset has sent to your email, please check it latter</string>
     <string name="comfirm_ok">OK</string>

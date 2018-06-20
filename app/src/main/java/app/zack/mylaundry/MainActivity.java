@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity  {
     private SparseArray<BaseFragment> navigateMap = new SparseArray<BaseFragment>();
     private Fragment mCurFragment;
 
+    public static final boolean DEBUG = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

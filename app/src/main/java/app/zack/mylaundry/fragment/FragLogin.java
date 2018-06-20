@@ -24,8 +24,12 @@ public class FragLogin extends BaseFragment implements View.OnClickListener{
     MySharedPer perf;
 
 
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        et_email.setText(null);
+        et_pwd.setText(null);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

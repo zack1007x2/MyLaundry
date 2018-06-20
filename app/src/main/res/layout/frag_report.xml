@@ -4,6 +4,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_choose_dates"
+        android:layout_centerHorizontal="true"
+        />
+
     <WebView
         android:id="@+id/web"
         android:layout_width="match_parent"
@@ -11,6 +19,7 @@
         android:src="@mipmap/logo"
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_date"
         android:layout_margin="@dimen/size_30"/>
 
 
