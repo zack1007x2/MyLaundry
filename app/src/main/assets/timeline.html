@@ -49,7 +49,7 @@
     for (var i = 0; i < jsonData.length; i++) {
       var data = jsonData[i];//machine data array
       var StartTime = new Date(data.time);
-      var EndTime = new Date(StartTime.getTime() + 30*60000);
+      var EndTime = new Date(StartTime.getTime() + 40*60000);
       tag = StartTime.getFullYear() + "/" + (StartTime.getMonth() + 1) + "/" + StartTime.getDate();
       dataTable.addRow([tag, new Date(0,0,0,StartTime.getHours(),StartTime.getMinutes(),StartTime.getSeconds()),
       new Date(0,0,0,EndTime.getHours(), EndTime.getMinutes(), EndTime.getSeconds())]);
