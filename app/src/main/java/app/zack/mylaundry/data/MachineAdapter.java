@@ -56,8 +56,8 @@ public class MachineAdapter extends BaseAdapter {
                     .findViewById(R.id.tvTitle);
             viewHolder.tvDateTitle = (TextView) convertView
                     .findViewById(R.id.tvDateTitle);
-//            viewHolder.ImgContent = (ImageView) convertView
-//                    .findViewById(R.id.ImgContent);
+            viewHolder.ImgContent = (ImageView) convertView
+                    .findViewById(R.id.ImgLogo);
 
             convertView.setTag(viewHolder);
         } else {
@@ -68,11 +68,10 @@ public class MachineAdapter extends BaseAdapter {
             return convertView;
         machinedata = mMachineList.get(position);
 
-        viewHolder.tvContent_title.setText("Info : ");
+        viewHolder.tvContent_title.setText(context.getResources().getIdentifier("txt"+machinedata.getMachineName(),"string", context.getPackageName()));
         viewHolder.tvDateTitle.setText("Rssi : "+machinedata.getRssi());
         viewHolder.tvTitle.setText(machinedata.getMachineName());
-//        viewHolder.ImgContent.setImageResource(R.drawable.demo);
-
+        viewHolder.ImgContent.setImageResource(context.getResources().getIdentifier("img"+machinedata.getMachineName(),"mipmap", context.getPackageName()));
         return convertView;
     }
 

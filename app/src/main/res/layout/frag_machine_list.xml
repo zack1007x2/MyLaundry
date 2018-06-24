@@ -6,12 +6,12 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="@dimen/size_50"
-        android:layout_height="@dimen/size_50"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="@dimen/size_150"
         android:src="@mipmap/logo"
         android:scaleType="fitXY"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/size_60"
+        android:layout_margin="@dimen/size_30"
         />
 
     <android.support.v4.widget.SwipeRefreshLayout
