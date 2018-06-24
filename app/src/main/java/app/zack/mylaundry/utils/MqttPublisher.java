@@ -6,6 +6,7 @@ import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
@@ -22,8 +23,8 @@ public class MqttPublisher {
     public static final int PORT = 1883;
     public static final String TOPIC = "GIOT-GW/UL/1C497B43217A";
     public static final int QOS = 0;
-//    private String clientId = MqttClient.generateClientId();
-    private String clientId = "jasdfg";
+    private String clientId = MqttClient.generateClientId();
+//    private String clientId = "jasdfg";
     private MqttAndroidClient mqttClient = null;
     private Context context = null;
     private MqttConnectOptions connOpts;
