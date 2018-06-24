@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     public void onBackPressed() {
-        if(mCurFragment.getClass() == FragRegister.class){
+        if(mCurFragment.getClass() == FragRegister.class || mCurFragment.getClass() == FragLogin.class){
             replaceFragment(R.layout.frag_login);
-        }else if(mCurFragment.getClass() != FragMachineList.class|| mCurFragment.getClass() != FragLogin.class){
+        }else if(mCurFragment.getClass() != FragMachineList.class){
             replaceFragment(R.layout.frag_machine_list);
         }
     }
